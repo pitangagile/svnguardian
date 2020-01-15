@@ -9,6 +9,9 @@ repeat_update=3										#repeat N times when workcopy is out of date: number
 sleep_update=5s										#syntax to command sleep. How many time sleep to next update. 5s = 5 seconds
 path_guardian=<path_to_dir_guardian>
 template_insert_nota=${path_guardian}/template_insert_nota.xml
+template_exists_issue=${path_guardian}/template_exists_issue.xml
+template_merge_rules=${path_guardian}/template_merge_rules.xml
+template_consulta_automerge=${path_guardian}/template_consulta_automerge.xml
 
 mantis_url=<url_mantis>
 mantis_connect=<path_api_soap>

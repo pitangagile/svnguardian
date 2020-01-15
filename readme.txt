@@ -8,10 +8,19 @@ REPOS="$1"
 REV="$2"
 <path_svnguardian>/insere-log-mantis-soap.sh $REPOS $REV "<path_svnguardian>/svnguardian-soap.properties" <id_projeto_mantis>
 
+#<id_projeto_mantis> para o projeto do cenpes (PRODUCAO) eh o 276
+#<id_projeto_mantis> para o projeto do cenpes (TESTES), eh o 368
+#Ex.: de chamada
+#/repos/svn/scm/svnguardian/producao/insere-log-mantis-soap.sh $REPOS $REV /repos/svn/scm/svnguardian/producao/svnguardian-soap.properties 276 
+
+
 4) "No arquivo hooks/pre-commit do repositorio acrescentar a chamada:
 REPOS="$1"
 TXN="$2"
 <path_svnguardian>/valida-commit-soap.sh -r $REPOS -t $TXN -b "<path_svnguardian>/svnguardian-soap.properties"
+
+#Ex.: de chamada
+#/repos/svn/scm/svnguardian/producao/valida-commit-soap.sh -r $REPOS -t $TXN -b /repos/svn/scm/svnguardian/producao/svnguardian-soap.properties
 
 
 #### ATENCAO ######

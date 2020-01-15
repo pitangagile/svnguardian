@@ -94,11 +94,11 @@ svn_repo_url=svn+ssh://${cv_user}@${cv_server}/${cv_root}
 
 targetBranch_co=$( dir_to_checkout $svn_repo_url $targetBranch )
 merge_output=$?
-echo "merge_output1:$merge_output||targetBranch_co:$targetBranch_co" >> $output_f
+#echo "merge_output1:$merge_output||targetBranch_co:$targetBranch_co" >> $output_f
 sourceBranch_co=$( dir_to_checkout $svn_repo_url $sourceBranch )
 merge_output=$(($merge_output + $?))
 
-echo "merge_output2:$merge_output||sourceBranch_co:$sourceBranch_co" >> $output_f
+#echo "merge_output2:$merge_output||sourceBranch_co:$sourceBranch_co" >> $output_f
 
 
 if [ "$merge_output" != "0" ]

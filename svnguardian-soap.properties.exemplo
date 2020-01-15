@@ -11,6 +11,8 @@ path_guardian=/repos/svn/scm/svnguardian/producao
 template_insert_nota=${path_guardian}/template_insert_nota.xml
 template_exists_issue=${path_guardian}/template_exists_issue.xml
 template_merge_rules=${path_guardian}/template_merge_rules.xml
+template_consulta_automerge=${path_guardian}/template_consulta_automerge.xml
+
 
 mantis_url=https://mantis.pitang.com
 mantis_connect=api/soap/mantisconnect.php

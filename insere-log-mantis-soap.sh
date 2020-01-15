@@ -22,7 +22,7 @@ REV="$2";
 guardian_properties="$3";
 source $guardian_properties
 id_project_mantis="$4";
-
+debug="$5";
 ##########################################################################################################
 ##########################################################################################################
 #identify source branch from revision
@@ -88,6 +88,19 @@ function exec_automerge() {
 idsCRs=$1
 
 source $guardian_properties
+
+arqautomerge_temp=/tmp/_temp_automerge$$
+cp ${template_consulta_automerge} ${arqautomerge_temp}
+
+sed -i -e "s/#mantis_user/${mantis_user}/g" -e "s/#mantis_pass/${mantis_pass}/g" -e "s/#id_CRs/${idsCRs}/g" ${arqautomerge_temp};
+
+resposta=$(curl -s --header "Content-Type: text/xml;charset=UTF-8" --header "SOAPAction: ${mantis_url}/${mantis_connect}/mc_issue_get_automerge_from_id_issues" --data @${arqautomerge_temp} ${mantis_url}:/${mantis_connect} --write-out '\nResult Code:%{http_code}')
+
+rm -f $arqautomerge_temp;
+
+echo $resposta | sed -E 's/(.*<return xsi:type="xsd:string">)(.*)(<\/return>.*)/\2/g'
+
+
 #TODO implmentar webservice para retornar se executa ou nao merge
 }
 ##########################################################################################################
@@ -306,8 +319,7 @@ export LANG=pt_BR
 
 export log_temp="/tmp/"$rev"_merge_out$$_rev"
 
-debug="" #coloque algo para debugar. ex. debug="Sim"
-log_debug=/tmp/_temp_log_merge$$
+export log_debug=/tmp/_temp_log_debug$$
 
 rm -f temp*_crs$USER
 
@@ -335,8 +347,10 @@ then
 		if [ "$debug" != "" ]; then echo "Merge.id_crs:$id_crs:" >> $log_debug; fi
 
         	#todo implementar como webservice exec_automerge
-		#automerge=$( exec_automerge "$id_crs" )
-        	automerge="Sim"
+		automerge=$( exec_automerge "$id_crs" )
+        #automerge="Sim"
+
+		if [ "$debug" != "" ]; then echo "AUTOMERGE.id_crs:$id_crs:$automerge" >> $log_debug; fi
 
 		if [ "$automerge" != "Nao" ]
 		then

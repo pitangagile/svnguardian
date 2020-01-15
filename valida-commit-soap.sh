@@ -50,6 +50,8 @@ sed -i -e "s/#mantis_user/${mantis_user}/g" -e "s/#mantis_pass/${mantis_pass}/g"
 
 resposta=$(curl -s --header "Content-Type: text/xml;charset=UTF-8" --header "SOAPAction: ${mantis_url}/${mantis_connect}/mc_issue_exists" --data @${arqexists_temp} ${mantis_url}:/${mantis_connect} --write-out '\nResult Code:%{http_code}')
 
+rm -f $arqexists_temp
+
 echo $resposta | sed -E 's/(.*<return xsi:type="xsd:boolean">)(.*)(<\/return>.*)/\2/g'
 }
 ##########################################################################################################
