@@ -1,0 +1,16 @@
+#AUTOMERGE PROPERTIES
+cv_user=<usuario_checkout_merge>  								#User to access svn repo via ssh key (password key blank, for example)
+cv_server=<svn_host> 								#host/ip Svn server
+
+svnserver_user=${cv_user}
+merge_checkout_path=<path_to_checkouts_automerge>/merge_automatico_wcs		#Path that contains the branch and trunk folders without a trailing slash. Ex.: repo1/project1. repo2
+merge_token="(AUTOMERGE: "							#identify actions run automatic by scripts
+repeat_update=3										#repeat N times when workcopy is out of date: number
+sleep_update=5s										#syntax to command sleep. How many time sleep to next update. 5s = 5 seconds
+path_guardian=<path_to_dir_guardian>
+template_insert_nota=${path_guardian}/template_insert_nota.xml
+
+mantis_url=<url_mantis>
+mantis_connect=<path_api_soap>
+mantis_user=<mantis_user>
+mantis_pass=<mantis_userpass>

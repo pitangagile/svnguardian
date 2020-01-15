@@ -1,0 +1,19 @@
+#AUTOMERGE PROPERTIES
+cv_user=scmprojeto  								#User to access svn repo via ssh key (password key blank, for example)
+cv_server=svn.pitang.com 								#host/ip Svn server
+
+svnserver_user=${cv_user}
+merge_checkout_path=/home/${svnserver_user}/merge_automatico_wcs		#Path that contains the branch and trunk folders without a trailing slash. Ex.: repo1/project1. repo2
+merge_token="(AUTOMERGE: "							#identify actions run automatic by scripts
+repeat_update=3										#repeat N times when workcopy is out of date: number
+sleep_update=5s										#syntax to command sleep. How many time sleep to next update. 5s = 5 seconds
+path_guardian=/repos/svn/scm/svnguardian/producao
+template_insert_nota=${path_guardian}/template_insert_nota.xml
+template_exists_issue=${path_guardian}/template_exists_issue.xml
+template_merge_rules=${path_guardian}/template_merge_rules.xml
+
+mantis_url=https://mantis.pitang.com
+mantis_connect=api/soap/mantisconnect.php
+mantis_user=petro.scm
+mantis_pass=Petro#2019
+

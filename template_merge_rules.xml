@@ -1,0 +1,10 @@
+<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://futureware.biz/mantisconnect">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:mc_project_get_merge_rules_from_id_project soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+         <username xsi:type="xsd:string">#mantis_user</username>
+         <password xsi:type="xsd:string">#mantis_pass</password>
+         <id_project xsi:type="xsd:string">#id_project</id_project>
+      </man:mc_project_get_merge_rules_from_id_project>
+   </soapenv:Body>
+</soapenv:Envelope>
